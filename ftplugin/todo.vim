@@ -8,6 +8,11 @@ if exists('g:loaded_todo_env')
 endif
 let g:loaded_todo_env = 1
 
+
+if !exists('g:todo_env_date_format')
+    let g:todo_env_date_format = "%Y/%m/%d (%a) %H:%M"
+endif
+
 let s:save_cpo = &cpo
 set cpo&vim
 
@@ -43,7 +48,7 @@ function! ToggleCheckbox()
   let l:line = getline('.')
   if l:line =~ '\-\s\[\s\]'
     " insert finished time
-    let l:result = substitute(l:line, '-\s\[\s\]', '- [x]', '') . ' [' . strftime("%Y/%m/%d (%a) %H:%M") . ']'
+    let l:result = substitute(l:line, '-\s\[\s\]', '- [x]', '') . ' [' . strftime(g:todo_env_date_format) . ']'
     call setline('.', l:result)
   elseif l:line =~ '\-\s\[x\]'
     let l:result = substitute(substitute(l:line, '-\s\[x\]', '- [ ]', ''), '\s\[\d\{4}.\+]$', '', '')

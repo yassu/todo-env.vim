@@ -18,10 +18,12 @@ syn case ignore
 
 syn match 	inProgress 	"- \[ ] .\+"
 syn match 	itemComplete 	"\s*- \[x] .\+"
+syn match   itemNotDo       "\s*- [-] .\+"
 syn match 	location 	"^[A-Z,a-z]\+\(\s\d\+\)\?,"
 
 highlight def link inProgress Label
 highlight def link itemComplete Comment
+highlight def link itemNotDo Comment
 highlight def link location Number
 
 let b:current_syntax = "todo"
