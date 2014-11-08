@@ -7,12 +7,12 @@ License: GNU
 
 目次    *todo_env_contents*
 
-概要    |todo_env_introduction|
-シンタックス    |todo_env_syntax|
-インターフェース    |todo_env_interface|
-    関数    |todo_env_function|
-    キーマッピング  |todo_env_keymappings|
-更新履歴    |todo_env_changelog|
+概要                    |todo_env_introduction|
+シンタックス            |todo_env_syntax|
+インターフェース        |todo_env_interface|
+    関数                |todo_env_function|
+    キーマッピング      |todo_env_keymappings|
+更新履歴                |todo_env_changelog|
 
 ================================================================================
 このプログラムはtodoリストためのシンプルな環境を提供する.
