@@ -1,5 +1,8 @@
 " environemnt for task
 " Version: 0.3.0
+" Author:  yassu <mathyassu at gmail.com>
+" License: GNU
+
 
 " fold method
 setlocal foldmethod=expr foldexpr=MkdCheckboxFold(v:lnum) foldtext=MkdCheckboxFoldText()
