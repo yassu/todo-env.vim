@@ -53,7 +53,7 @@ function! ToggleCheckbox()
     " insert finished time
     let l:result = substitute(l:line, '-\s\[\s\]', '- [x]', '')
     if g:todo_env_input_date
-        let l:result .= '[' . strftime(g:todo_env_date_format) . ']'
+        let l:result .= ' [' . strftime(g:todo_env_date_format) . ']'
     endif
     call setline('.', l:result)
   elseif l:line =~ '\-\s\[x\]'
