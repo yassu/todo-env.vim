@@ -3,6 +3,13 @@
 " Author:  yassu <mathyassu at gmail.com>
 " License: GNU
 
+if exists('g:loaded_todo_env')
+    finish
+endif
+let g:loaded_todo_env = 1
+
+let s:save_cpo = &cpo
+set cpo&vim
 
 " fold method
 setlocal foldmethod=expr foldexpr=MkdCheckboxFold(v:lnum) foldtext=MkdCheckboxFoldText()
@@ -28,8 +35,17 @@ function! MkdCheckboxFoldText()
 endfunction
 
 
+
+syn match MkdCheckboxMark /-\s\[x\]\s.\+/ display containedin=ALL
+hi MkdCheckboxMark ctermfg=green
+syn match MkdCheckboxUnmark /-\s\[\s\]\s.\+/ display containedin=ALL
+hi MkdCheckboxUnmark ctermfg=red
+
+
+set foldmethod=marker
+
 " toggle todo whethere done or not done
-function! ToggleCheckbox()
+function! todo_env#ToggleCheckbox()
   let l:line = getline('.')
   if l:line =~ '\-\s\[\s\]'
     " insert finished time
@@ -41,16 +57,9 @@ function! ToggleCheckbox()
   end
 endfunction
 
-syn match MkdCheckboxMark /-\s\[x\]\s.\+/ display containedin=ALL
-hi MkdCheckboxMark ctermfg=green
-syn match MkdCheckboxUnmark /-\s\[\s\]\s.\+/ display containedin=ALL
-hi MkdCheckboxUnmark ctermfg=red
-
-
-set foldmethod=marker
-
-" toggle whether task is done or or done
-
 " mappings
 imap <c-l> - [ ]
-nnoremap <buffer> tt :call ToggleCheckbox()<cr>
+nnoremap <buffer> tt :call todo_env#ToggleCheckbox()<cr>
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
