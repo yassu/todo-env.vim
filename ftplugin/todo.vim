@@ -75,8 +75,8 @@ endfunction
 
 " mappings
 imap <c-l> - [ ]
-nnoremap <buffer> tt :call ToggleCheckbox()<cr>
-nnoremap <silent><buffer> <c-d> :call ToggleCancellation()<cr>
+nnoremap <buffer> <Leader>t :call ToggleCheckbox()<cr>
+nnoremap <silent><Leader>c <c-d> :call ToggleCancellation()<cr>
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
