@@ -36,16 +36,10 @@ endfunction
 
 
 
-syn match MkdCheckboxMark /-\s\[x\]\s.\+/ display containedin=ALL
-hi MkdCheckboxMark ctermfg=green
-syn match MkdCheckboxUnmark /-\s\[\s\]\s.\+/ display containedin=ALL
-hi MkdCheckboxUnmark ctermfg=red
-
-
 set foldmethod=marker
 
 " toggle todo whethere done or not done
-function! todo_env#ToggleCheckbox()
+function! ToggleCheckbox()
   let l:line = getline('.')
   if l:line =~ '\-\s\[\s\]'
     " insert finished time
@@ -59,7 +53,7 @@ endfunction
 
 " mappings
 imap <c-l> - [ ]
-nnoremap <buffer> tt :call todo_env#ToggleCheckbox()<cr>
+nnoremap <buffer> tt :call ToggleCheckbox()<cr>
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
