@@ -26,6 +26,7 @@ e.g. change from `[ ]` to `[x]` and for `[x]` to `[ ]`.
 ## Key mapping
 * `<c-l>` in insert mode: input `- [ ]`.
 * `tt`: call `ToggleCheckbox` function
+* `<c-d>` call `ToggleDeleteLine()` function
 
 ## Customizing
 
