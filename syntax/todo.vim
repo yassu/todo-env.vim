@@ -1,4 +1,7 @@
-" Vim syntax file
+" environemnt for task
+" Version: 0.3.0
+" Author:  yassu <mathyassu at gmail.com>
+" License: GNU
 " This file is forked of
 
     " Language:     Todo Files
@@ -18,11 +21,11 @@ syn case ignore
 
 syn match 	inProgress 	"- \[ ] .\+"
 syn match 	itemComplete 	"\s*- \[x] .\+"
-syn match   itemNotDo       "\s*- [-] .\+"
+syn match   itemNotDo       "\s*- \[-] .\+"
 syn match 	location 	"^[A-Z,a-z]\+\(\s\d\+\)\?,"
 
 highlight def link inProgress Label
-highlight def link itemComplete Comment
+highlight def link itemComplete Type
 highlight def link itemNotDo Comment
 highlight def link location Number
 
