@@ -1,4 +1,4 @@
-# task-env.vim
+# todo-env.vim
 Version: 0.3
 
 to-do lists environment
