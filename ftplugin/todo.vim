@@ -62,9 +62,21 @@ function! ToggleCheckbox()
   end
 endfunction
 
+function! ToggleDeleteLine()
+    let l:line = getline('.')
+    if l:line =~ '\-\s\[\s\]'
+        let l:result = substitute(l:line, '-\s\[\s\]', '- [-]', '')
+    elseif l:line =~ '\-\s\[\-\]'
+        let l:result = substitute(l:line, '-\s\[\-\]', '- [ ]', '')
+    endif
+    let l:lnum = line('.')
+    call setline(l:lnum, l:result)
+endfunction
+
 " mappings
 imap <c-l> - [ ]
 nnoremap <buffer> tt :call ToggleCheckbox()<cr>
+nnoremap <silent><buffer> <c-d> :call ToggleDeleteLine()<cr>
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
