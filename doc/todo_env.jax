@@ -61,7 +61,6 @@ g:todo_env_input_date   *g:todo_env_input_date*
 この値が0なら日付を入力しません.
 概定値は1です.
 
-g:date_format
 マッピング  *todo_env_keymappings*
 
 {lhs}                         {rhs}
