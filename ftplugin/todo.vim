@@ -62,7 +62,7 @@ function! ToggleCheckbox()
   end
 endfunction
 
-function! ToggleDeleteLine()
+function! ToggleCancellation()
     let l:line = getline('.')
     if l:line =~ '\-\s\[\s\]'
         let l:result = substitute(l:line, '-\s\[\s\]', '- [-]', '')
@@ -76,7 +76,7 @@ endfunction
 " mappings
 imap <c-l> - [ ]
 nnoremap <buffer> tt :call ToggleCheckbox()<cr>
-nnoremap <silent><buffer> <c-d> :call ToggleDeleteLine()<cr>
+nnoremap <silent><buffer> <c-d> :call ToggleCancellation()<cr>
 
 let &cpo = s:save_cpo
 unlet s:save_cpo

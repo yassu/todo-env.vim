@@ -20,8 +20,9 @@ Location 2, Person 2
 This plugin will automatically apply the syntax highlighting to files named `*.todo`.
 
 ## functions
-`ToggleCheckbox()`: changing status of Todo.
-e.g. change from `[ ]` to `[x]` and for `[x]` to `[ ]`.
+* `ToggleCheckbox()`: changing status of Todo.
+    e.g. change from `[ ]` to `[x]` and for `[x]` to `[ ]`.
+* `ToggleCancellation`: changing status of Todo: empty -> cancel
 
 ## Key mapping
 * `<c-l>` in insert mode: input `- [ ]`.
