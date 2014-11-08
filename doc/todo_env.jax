@@ -12,9 +12,11 @@ License: GNU
 インターフェース        |todo_env_interface|
     関数                |todo_env_function|
     キーマッピング      |todo_env_keymappings|
+    設定                |todo_env_customizing|
 更新履歴                |todo_env_changelog|
 
 ================================================================================
+概要            *todo_env_introduction*
 このプログラムはtodoリストためのシンプルな環境を提供する.
 
 要件:
@@ -44,9 +46,22 @@ Location 2, Person 2
 
 関数        *todo_env_function*
 
-ToggleCheckbox()    まだ完成していないタスクと完成したタスクをトグルします.
+|ToggleCheckbox()|    まだ完成していないタスクと完成したタスクをトグルします.
 
 --------------------------------------------------------------------------------
+
+設定        *todo_env_customizing*
+
+g:todo_env_date_format     *g:todo_env_date_format*
+日付のフォーマットを指定します.
+概定値は"%Y/%m/%d (%a) %H:%M"です.
+
+g:todo_env_input_date   *g:todo_env_input_date*
+|ToggleCheckbox()|を呼び出したときに,日付を入力するかどうかを指定します.
+この値が0なら日付を入力しません.
+概定値は1です.
+
+g:date_format
 マッピング  *todo_env_keymappings*
 
 {lhs}                         {rhs}
