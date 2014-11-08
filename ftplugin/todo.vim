@@ -75,6 +75,7 @@ endfunction
 
 " mappings
 imap <c-l> - [ ]
+imap <c-d> - [-]
 nnoremap <buffer> tt :call ToggleCheckbox()<cr>
 nnoremap <silent><buffer> <c-d> :call ToggleDeleteLine()<cr>
 
