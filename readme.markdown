@@ -27,6 +27,11 @@ e.g. change from `[ ]` to `[x]` and for `[x]` to `[ ]`.
 * `<c-l>` in insert mode: input `- [ ]`.
 * `tt`: call `ToggleCheckbox` function
 
+## Customizing
+
+* `todo_env_input_date`: whether input date or not when done task
+* `todo_env_date_format`: date-format for using when done task
+
 ## Installation
 Copy the included folders to your $VIM folder.
 
