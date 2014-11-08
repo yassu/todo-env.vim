@@ -35,6 +35,7 @@ Location 2, Person 2
 - [x] Completed Item
 - [ ] Item 1
 - [x] Completed Item
+- [-] strikethrough
 ```
 
 このプログラムはファイルタイプが`todo`であるファイルを自動的にシンタックスハイライトする.
@@ -47,6 +48,7 @@ Location 2, Person 2
 関数        *todo_env_function*
 
 |ToggleCheckbox()|    まだ完成していないタスクと完成したタスクをトグルします.
+|ToggleDeleteLine()| まだ完成していないタスクとやらないことになったタスクをトグルします.
 
 --------------------------------------------------------------------------------
 
@@ -66,6 +68,7 @@ g:todo_env_input_date   *g:todo_env_input_date*
 {lhs}                         {rhs}
 --------
 <c-l>(インサートモード)       `- [ ]`を入力する.
+<c-d>                         |ToggleDeleteLine()|を呼ぶ.
 tt                            `ToggleCheckbox()`を呼ぶ.
 
 ================================================================================
