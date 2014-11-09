@@ -25,14 +25,16 @@ This plugin will automatically apply the syntax highlighting to files named `*.t
 * `ToggleCancellation`: changing status of Todo: empty -> cancel
 
 ## Key mapping
+Following keymaps will not be used if `todo_env_default_keymaps` is equal to 0.
 * `<c-l>` in insert mode: input `- [ ]`.
 * `tt`: call `Todo_ToggleCheckbox` function
-* `<c-d>` call `ToggleDeleteLine()` function
+* `<c-c>` call `ToggleDeleteLine()` function
 
 ## Customizing
 
 * `todo_env_input_date`: whether input date or not when done task
 * `todo_env_date_format`: date-format for using when done task
+* `todo_env_default_keymaps`: whether use default keymaps or not
 
 ## Installation
 Copy the included folders to your $VIM folder.

@@ -64,11 +64,12 @@ g:todo_env_input_date   *g:todo_env_input_date*
 概定値は1です.
 
 マッピング  *todo_env_keymappings*
+以下のマッピングは`todo_env_default_keymappings`が0であれば,設定されません.
 
 {lhs}                         {rhs}
 --------
 <c-l>(インサートモード)       `- [ ]`を入力する.
-<c-d>                         |ToggleDeleteLine()|を呼ぶ.
+<c-c>                         |ToggleDeleteLine()|を呼ぶ.
 tt                            `Todo_ToggleCheckbox()`を呼ぶ.
 
 ================================================================================
