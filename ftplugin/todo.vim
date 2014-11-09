@@ -3,11 +3,6 @@
 " Author:  yassu <mathyassu at gmail.com>
 " License: GNU
 
-if exists('g:loaded_todo_env')
-    finish
-endif
-let g:loaded_todo_env = 1
-
 
 if !exists('g:todo_env_date_format')
     let g:todo_env_date_format = "%Y/%m/%d (%a) %H:%M"
@@ -20,25 +15,25 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 " fold method
-setlocal foldmethod=expr foldexpr=MkdCheckboxFold(v:lnum) foldtext=MkdCheckboxFoldText()
+setlocal foldmethod=expr foldexpr=s:MkdCheckboxFold(v:lnum) foldtext=s:MkdCheckboxFoldText()
 
-function! MkdCheckboxFold(lnum)
+function! s:MkdCheckboxFold(lnum)
     let line = getline(a:lnum)
     let next = getline(a:lnum + 1)
-    if MkdIsNoIndentCheckboxLine(line) && MkdHasIndentLine(next)
+    if s:MkdIsNoIndentCheckboxLine(line) && s:MkdHasIndentLine(next)
         return 1
-    elseif (MkdIsNoIndentCheckboxLine(next) || next =~ '^$') && !MkdHasIndentLine(next)
+    elseif (s:MkdIsNoIndentCheckboxLine(next) || next =~ '^$') && !s:MkdHasIndentLine(next)
         return '<1'
     endif
     return '='
 endfunction
-function! MkdIsNoIndentCheckboxLine(line)
+function! s:MkdIsNoIndentCheckboxLine(line)
     return a:line =~ '^- \[[ x]\] '
 endfunction
-function! MkdHasIndentLine(line)
+function! s:MkdHasIndentLine(line)
     return a:line =~ '^[[:blank:]]\+'
 endfunction
-function! MkdCheckboxFoldText()
+function! s:MkdCheckboxFoldText()
     return getline(v:foldstart) . ' (' . (v:foldend - v:foldstart) . ' lines) '
 endfunction
 
@@ -47,7 +42,7 @@ endfunction
 set foldmethod=marker
 
 " toggle todo whethere done or not done
-function! ToggleCheckbox()
+function! Todoenv_ToggleCheckbox()
   let l:line = getline('.')
   if l:line =~ '\-\s\[\s\]'
     " insert finished time
@@ -62,7 +57,7 @@ function! ToggleCheckbox()
   end
 endfunction
 
-function! ToggleCancellation()
+function! Todoenv_ToggleCancellation()
     let l:line = getline('.')
     if l:line =~ '\-\s\[\s\]'
         let l:result = substitute(l:line, '-\s\[\s\]', '- [-]', '')
@@ -75,8 +70,9 @@ endfunction
 
 " mappings
 imap <c-l> - [ ]
-nnoremap <buffer>tt :call ToggleCheckbox()<cr>
-nnoremap <silent>cc :call ToggleCancellation()<cr>
+echo 'abc'
+nnoremap <silent><buffer>tt :call Todoenv_ToggleCheckbox()<cr>
+nnoremap <silent><buffer>cc :call Todoenv_ToggleCancellation()<cr>
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
