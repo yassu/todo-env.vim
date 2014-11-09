@@ -38,9 +38,6 @@ function! s:MkdCheckboxFoldText()
 endfunction
 
 
-
-set foldmethod=marker
-
 " toggle todo whethere done or not done
 function! Todoenv_ToggleCheckbox()
   let l:line = getline('.')
@@ -70,7 +67,6 @@ endfunction
 
 " mappings
 imap <c-l> - [ ]
-echo 'abc'
 nnoremap <silent><buffer>tt :call Todoenv_ToggleCheckbox()<cr>
 nnoremap <silent><buffer>cc :call Todoenv_ToggleCancellation()<cr>
 
