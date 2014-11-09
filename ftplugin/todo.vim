@@ -10,12 +10,19 @@ endif
 if !exists('g:todo_env_input_date')
     let g:todo_env_input_date = 1
 endif
+if !exists('g:todo_env_fold_child')
+    let g:todo_env_fold_child = 1
+endif
 
 let s:save_cpo = &cpo
 set cpo&vim
 
 " fold method
-setlocal foldmethod=expr foldexpr=s:MkdCheckboxFold(v:lnum) foldtext=s:MkdCheckboxFoldText()
+if g:todo_env_fold_child
+    setlocal foldmethod=expr foldexpr=s:MkdCheckboxFold(v:lnum) foldtext=s:MkdCheckboxFoldText()
+else
+    setlocal foldmethod=expr
+endif
 
 function! s:MkdCheckboxFold(lnum)
     let line = getline(a:lnum)
@@ -66,9 +73,11 @@ function! Todoenv_ToggleCancellation()
 endfunction
 
 " mappings
-imap <c-l> - [ ]
-nnoremap <silent><buffer>tt :call Todoenv_ToggleCheckbox()<cr>
-nnoremap <silent><buffer>cc :call Todoenv_ToggleCancellation()<cr>
+if !exists('g:todo_env_default_keymaps')|| (exists('g:todo_env_default_keymaps') && g:todo_env_default_keymaps)
+    imap <buffer><c-l> - [ ]
+    nnoremap <silent><buffer>tt :call Todoenv_ToggleCheckbox()<cr>
+    nnoremap <silent><buffer>cc :call Todoenv_ToggleCancellation()<cr>
+endif
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
