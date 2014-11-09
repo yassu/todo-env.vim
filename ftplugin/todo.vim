@@ -47,18 +47,18 @@ endfunction
 
 " toggle todo whethere done or not done
 function! Todoenv_ToggleCheckbox()
-  let l:line = getline('.')
-  if l:line =~ '\-\s\[\s\]'
-    " insert finished time
-    let l:result = substitute(l:line, '-\s\[\s\]', '- [x]', '')
-    if g:todo_env_input_date
-        let l:result .= ' [' . strftime(g:todo_env_date_format) . ']'
+    let l:line = getline('.')
+    if l:line =~ '\-\s\[\s\]'
+        " insert finished time
+        let l:result = substitute(l:line, '-\s\[\s\]', '- [x]', '')
+        if g:todo_env_input_date
+            let l:result .= ' [' . strftime(g:todo_env_date_format) . ']'
+        endif
+        call setline('.', l:result)
+    elseif l:line =~ '\-\s\[x\]'
+        let l:result = substitute(substitute(l:line, '-\s\[x\]', '- [ ]', ''), '\s\[\d\{4}.\+]$', '', '')
+        call setline('.', l:result)
     endif
-    call setline('.', l:result)
-  elseif l:line =~ '\-\s\[x\]'
-    let l:result = substitute(substitute(l:line, '-\s\[x\]', '- [ ]', ''), '\s\[\d\{4}.\+]$', '', '')
-    call setline('.', l:result)
-  end
 endfunction
 
 function! Todoenv_ToggleCancellation()
