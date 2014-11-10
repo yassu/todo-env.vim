@@ -24,6 +24,10 @@ else
     setlocal foldmethod=expr
 endif
 
+function! s:is_dummy_line(lstr)
+    return a:lstr =~ '^\s*$'
+endfunction
+
 function! s:MkdCheckboxFold(lnum)
     let line = getline(a:lnum)
     let next = getline(a:lnum + 1)
@@ -42,6 +46,14 @@ function! s:MkdHasIndentLine(line)
 endfunction
 function! s:MkdCheckboxFoldText()
     return getline(v:foldstart) . ' (' . (v:foldend - v:foldstart) . ' lines) '
+endfunction
+
+function! s:is_task_line(lstr)
+    " until
+endfunction
+
+function! s:get_task_lines()    " in same project
+    " until
 endfunction
 
 
