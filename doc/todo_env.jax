@@ -47,8 +47,8 @@ Location 2, Person 2
 
 関数        *todo_env_function*
 
-|Todo_ToggleCheckbox()|    まだ完成していないタスクと完成したタスクをトグルします.
-|ToggleDeleteLine()| まだ完成していないタスクとやらないことになったタスクをトグルします.
+|todo_env#Todo_ToggleCheckbox()|    まだ完成していないタスクと完成したタスクをトグルします.
+|todo_env#ToggleDeleteLine()| まだ完成していないタスクとやらないことになったタスクをトグルします.
 
 --------------------------------------------------------------------------------
 

@@ -20,9 +20,9 @@ Location 2, Person 2
 This plugin will automatically apply the syntax highlighting to files named `*.todo`.
 
 ## functions
-* `Todo_ToggleCheckbox()`: changing status of Todo.
+* `todo_env#Todo_ToggleCheckbox()`: changing status of Todo.
     e.g. change from `[ ]` to `[x]` and for `[x]` to `[ ]`.
-* `ToggleCancellation`: changing status of Todo: empty -> cancel
+* `todo_env#ToggleCancellation`: changing status of Todo: empty -> cancel
 
 ## Key mapping
 Following keymaps will not be used if `todo_env_default_keymaps` is equal to 0.
