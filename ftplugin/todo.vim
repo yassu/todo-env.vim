@@ -10,6 +10,15 @@ endif
 if !exists('g:todo_env_input_date')
     let g:todo_env_input_date = 1
 endif
+if !exists('g:todo_env_not_done_str')
+    let g:todo_env_not_done_str = '- [ ] '
+endif
+if !exists('g:todo_env_done_str')
+    let g:todo_env_done_str = '- [x] '
+endif
+if !exists('g:todo_env_cancellation_str')
+    let g:todo_env_cancellation_str = '- [-] '
+endif
 if !exists('g:todo_env_fold_child')
     let g:todo_env_fold_child = 1
 endif
