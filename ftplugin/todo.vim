@@ -26,14 +26,6 @@ endif
 let s:save_cpo = &cpo
 set cpo&vim
 
-" fold method
-if g:todo_env_fold_child
-    setlocal foldmethod=expr foldexpr=todo_env#s:MkdCheckboxFold(v:lnum) foldtext=todo_env#s:MkdCheckboxFoldText()
-else
-    setlocal foldmethod=expr
-endif
-
-
 " mappings
 if !exists('g:todo_env_default_keymaps')|| (exists('g:todo_env_default_keymaps') && g:todo_env_default_keymaps)
     imap <buffer><c-l> - [ ]

@@ -11,26 +11,6 @@ function! todo_env#s:is_dummy_line(lstr)
     return a:lstr =~ '^\s*$'
 endfunction
 
-function! todo_env#s:MkdCheckboxFold(lnum)
-    let line = getline(a:lnum)
-    let next = getline(a:lnum + 1)
-    if s:MkdIsNoIndentCheckboxLine(line) && s:MkdHasIndentLine(next)
-        return 1
-    elseif (s:MkdIsNoIndentCheckboxLine(next) || next =~ '^$') && !s:MkdHasIndentLine(next)
-        return '<1'
-    endif
-    return '='
-endfunction
-function! todo_env#s:MkdIsNoIndentCheckboxLine(line)
-    return a:line =~ '^- \[[ x]\] '
-endfunction
-function! todo_env#s:MkdHasIndentLine(line)
-    return a:line =~ '^[[:blank:]]\+'
-endfunction
-function! todo_env#s:MkdCheckboxFoldText()
-    return getline(v:foldstart) . ' (' . (v:foldend - v:foldstart) . ' lines) '
-endfunction
-
 function! todo_env#s:is_task_line(lstr)
     " until
 endfunction
