@@ -12,14 +12,6 @@ function! todo_env#s:is_dummy_line(lstr)
 endfunction
 
 
-function! todo_env#s:is_task_line(lstr)
-    " until
-endfunction
-
-function! todo_env#s:get_task_lines()    " in same project
-    " until
-endfunction
-
 " toggle todo whethere done or not done
 function! todo_env#ToggleCheckbox()
     let l:line = getline('.')
