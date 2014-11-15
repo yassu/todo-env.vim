@@ -47,7 +47,7 @@ Location 2, Person 2
 
 関数        *todo_env_function*
 
-|todo_env#Todo_ToggleCheckbox()|    まだ完成していないタスクと完成したタスクをトグルします.
+|todo_env#ToggleCheckbox()|    まだ完成していないタスクと完成したタスクをトグルします.
 |todo_env#ToggleDeleteLine()| まだ完成していないタスクとやらないことになったタスクをトグルします.
 
 --------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ g:todo_env_date_format     *g:todo_env_date_format*
 概定値は"%Y/%m/%d (%a) %H:%M"です.
 
 g:todo_env_input_date   *g:todo_env_input_date*
-|Todo_ToggleCheckbox()|を呼び出したときに,日付を入力するかどうかを指定します.
+|todo_env#ToggleCheckbox()|を呼び出したときに,日付を入力するかどうかを指定します.
 この値が0なら日付を入力しません.
 概定値は1です.
 
@@ -70,6 +70,6 @@ g:todo_env_input_date   *g:todo_env_input_date*
 --------
 <c-l>(インサートモード)       `- [ ]`を入力する.
 <c-c>                         |ToggleDeleteLine()|を呼ぶ.
-tt                            `Todo_ToggleCheckbox()`を呼ぶ.
+tt                            `todo_env#ToggleCheckbox()`を呼ぶ.
 
 ================================================================================
