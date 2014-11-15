@@ -12,6 +12,16 @@ function! todo_env#s:is_dummy_line(lstr)
     return a:lstr =~ '^\s*$'
 endfunction
 
+function! todo_env#s:delete_head_spaces(lstr)
+    " return [content, spaces]
+    let l:M = matchlist(a:lstr, '^\(\s*\)\(\S.*\)$')
+    if len(l:M)
+        return [l:M[1], l:M[0]]
+    else
+        return []
+    endif
+endfunction
+
 function! todo_env#s:startswith(text, start_s)
     return a:text[:len(a:start_s) - 1] == a:start_s
 endfunction
