@@ -53,15 +53,15 @@ endfunction
 function! todo_env#ToggleCancellation()
     let l:line = getline('.')
     if todo_env#s:startswith(l:line, g:todo_env_not_done_str)
-        let l:result = substitute(l:line, '-\s\[\s\]', '- [-]', '')
-    elseif todo_env#s:s:startswith(l:line, g:todo_env_cancellation_str)
-        let l:result = substitute(l:line, '-\s\[\-\]', '- [ ]', '')
+        let l:result = todo_env#s:replace_head(
+                    \ l:line, g:todo_env_not_done_str, g:todo_env_cancellation_str)
+    elseif todo_env#s:startswith(l:line, g:todo_env_cancellation_str)
+        let l:result = todo_env#s:replace_head(
+                    \ l:line, g:todo_env_cancellation_str, g:todo_env_not_done_str)
     endif
     let l:lnum = line('.')
     call setline(l:lnum, l:result)
 endfunction
-
-
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
