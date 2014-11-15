@@ -26,8 +26,11 @@ function! todo_env#s:replace_head(text, _from, _to)
     endif
     return a:_to . a:text[len(a:_from):]
 endfunction
-" }}}
 
+function! todo_env#s:delete_date_part(line)
+    return substitute(a:line, '\s*\[[^]]\+]$', '', '')
+endfunction
+" }}}
 
 " toggle todo whethere done or not done
 function! todo_env#ToggleCheckbox()
