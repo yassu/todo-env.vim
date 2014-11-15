@@ -27,6 +27,10 @@ function! todo_env#s:replace_head(text, _from, _to)
     return a:_to . a:text[len(a:_from):]
 endfunction
 
+function! todo_env#s:delete_head_spaces(line)
+    return substitute(a:line, '^\s*', '', 'g')
+endfunction
+
 function! todo_env#s:delete_date_part(line)
     return substitute(a:line, '\s*\[[^]]\+]$', '', '')
 endfunction
