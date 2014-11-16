@@ -29,6 +29,7 @@ Following keymaps will not be used if `todo_env_default_keymaps` is equal to 0.
 * `<c-l>` in insert mode: input `- [ ]`.
 * `tt`: call `todo_env#ToggleCheckbox` function
 * `<c-c>` call `todo_env#ToggleDeleteLine()` function
+
 =======
 * `<c-l>` in insert mode: input `g:todo_env_not_done_str`.
 * `tt`: call `Todo_ToggleCheckbox` function
