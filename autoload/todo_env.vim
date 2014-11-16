@@ -70,6 +70,11 @@ endfunction
 
 function! todo_env#ToggleCancellation()
     let l:line = getline('.')
+    if todo_env#s:delete_head_spaces(l:line) == []
+        echomsg "This line doesn't mean task."
+        return
+    endif
+
     let [l:line_without_spaces, l:spaces] = todo_env#s:delete_head_spaces(l:line)
     if todo_env#s:startswith(l:line_without_spaces, g:todo_env_not_done_str)
         let l:result = todo_env#s:replace_head(
@@ -77,6 +82,9 @@ function! todo_env#ToggleCancellation()
     elseif todo_env#s:startswith(l:line_without_spaces, g:todo_env_cancellation_str)
         let l:result = todo_env#s:replace_head(
                     \ l:line_without_spaces, g:todo_env_cancellation_str, g:todo_env_not_done_str)
+    else
+        echomsg "This line doesn't mean empty or cancelled task."
+        return
     endif
     let l:lnum = line('.')
     call setline(l:lnum, l:spaces . l:result)
