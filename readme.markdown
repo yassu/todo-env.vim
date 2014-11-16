@@ -20,8 +20,8 @@ Location 2, Person 2
 This plugin will automatically apply the syntax highlighting to files named `*.todo`.
 
 ## functions
-* `todo_env#ToggleCheckbox()`: changing status of Todo.
-    e.g. change from `[ ]` to `[x]` and for `[x]` to `[ ]`.
+* `todo_env#Todo_ToggleCheckbox()`: changing status of Todo.
+    e.g. change from `[ ]` to `[x]` and for `[x]` to `[ ]`, when default setting.
 * `todo_env#ToggleCancellation`: changing status of Todo: empty -> cancel
 
 ## Key mapping
@@ -29,9 +29,16 @@ Following keymaps will not be used if `todo_env_default_keymaps` is equal to 0.
 * `<c-l>` in insert mode: input `- [ ]`.
 * `tt`: call `todo_env#ToggleCheckbox` function
 * `<c-c>` call `todo_env#ToggleDeleteLine()` function
+=======
+* `<c-l>` in insert mode: input `g:todo_env_not_done_str`.
+* `tt`: call `Todo_ToggleCheckbox` function
+* `<c-c>` call `ToggleDeleteLine()` function
 
 ## Customizing
 
+* `todo_env_not_done_str`: string for not done task
+* `todo_env_done_str`:    string for done task
+* `todo_env_cancellation_str`: string for cancelled task
 * `todo_env_input_date`: whether input date or not when done task
 * `todo_env_date_format`: date-format for using when done task
 * `todo_env_default_keymaps`: whether use default keymaps or not

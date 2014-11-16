@@ -17,14 +17,14 @@ License: GNU
 
 ================================================================================
 概要            *todo_env_introduction*
-このプログラムはtodoリストためのシンプルな環境を提供する.
+このプログラムはtodoリストためのシンプルな環境を提供します.
 
 要件:
     - Vim 7.0 以降
 
 ================================================================================
 シンタックス    *todo_env_syntax*
-このプログラムはmarkdownのようなハイライトを提供する.
+このプログラムはmarkdownのようなハイライトをします.
 
 ```
 Location 1, Person 1
@@ -38,7 +38,7 @@ Location 2, Person 2
 - [-] strikethrough
 ```
 
-このプログラムはファイルタイプが`todo`であるファイルを自動的にシンタックスハイライトする.
+このプログラムはファイルタイプが`todo`であるファイルを自動的にシンタックスハイライトします.
 
 ================================================================================
 シンタックス    *todo_env_interface*
@@ -47,12 +47,24 @@ Location 2, Person 2
 
 関数        *todo_env_function*
 
-|todo_env#ToggleCheckbox()|    まだ完成していないタスクと完成したタスクをトグルします.
+|todo_env#Todo_ToggleCheckbox()|    まだ完成していないタスクと完成済みのタスクをトグルします.
 |todo_env#ToggleDeleteLine()| まだ完成していないタスクとやらないことになったタスクをトグルします.
 
 --------------------------------------------------------------------------------
 
 設定        *todo_env_customizing*
+
+g:todo_env_not_done_str *g:todo_env_not_done_str*
+完成していないタスクの行頭につけるマークを指定します.
+初期値は`- [] `です.
+
+g:todo_env_done_str     *g:todo_env_done_str*
+完成済みのタスクの行頭につけるマークを指定します.
+初期値は`- [x] `です.
+
+g:todo_env_cancellation_str *g:todo_env_cancellation_str*
+取り消されたタスクの行頭につけるマークを指定します.
+初期値は`- [-] `です.
 
 g:todo_env_date_format     *g:todo_env_date_format*
 日付のフォーマットを指定します.
@@ -68,7 +80,7 @@ g:todo_env_input_date   *g:todo_env_input_date*
 
 {lhs}                         {rhs}
 --------
-<c-l>(インサートモード)       `- [ ]`を入力する.
+<c-l>(インサートモード)       `g:todo_env_not_done_str`を入力する.
 <c-c>                         |ToggleDeleteLine()|を呼ぶ.
 tt                            `todo_env#ToggleCheckbox()`を呼ぶ.
 

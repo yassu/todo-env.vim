@@ -10,21 +10,26 @@ endif
 if !exists('g:todo_env_input_date')
     let g:todo_env_input_date = 1
 endif
+if !exists('g:todo_env_not_done_str')
+    let g:todo_env_not_done_str = '- [ ] '
+endif
+if !exists('g:todo_env_done_str')
+    let g:todo_env_done_str = '- [x] '
+endif
+if !exists('g:todo_env_cancellation_str')
+    let g:todo_env_cancellation_str = '- [-] '
+endif
+if !exists('g:todo_env_fold_child')
+    let g:todo_env_fold_child = 1
+endif
 
 let s:save_cpo = &cpo
 set cpo&vim
 
-" fold method
-if g:todo_env_fold_child
-    setlocal foldmethod=expr foldexpr=todo_env#s:MkdCheckboxFold(v:lnum) foldtext=todo_env#s:MkdCheckboxFoldText()
-else
-    setlocal foldmethod=expr
-endif
-
-
 " mappings
-if !exists('g:todo_env_default_keymaps')|| (exists('g:todo_env_default_keymaps') && g:todo_env_default_keymaps)
-    imap <buffer><c-l> - [ ]
+if !exists('g:todo_env_default_keymaps') ||
+            \(exists('g:todo_env_default_keymaps') && g:todo_env_default_keymaps)
+    imap <buffer><c-l> <c-R>=g:todo_env_not_done_str<cr>
     nnoremap <silent><buffer>tt :call todo_env#ToggleCheckbox()<cr>
     nnoremap <silent><buffer>cc :call todo_env#ToggleCancellation()<cr>
 endif
