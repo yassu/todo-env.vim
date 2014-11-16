@@ -1,5 +1,5 @@
 # todo-env.vim
-Version: 0.3
+Version: 0.5
 
 to-do lists environment
 

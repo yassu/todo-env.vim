@@ -1,5 +1,5 @@
 *task_env.vim*  シンプルなtodoリスト環境
-Version: 0.3
+Version: 0.5
 Author: yassu0320 <mathyassu at gmail.com>
 License: GNU
 
@@ -85,3 +85,20 @@ g:todo_env_input_date   *g:todo_env_input_date*
 tt                            `todo_env#ToggleCheckbox()`を呼ぶ.
 
 ================================================================================
+
+更新履歴                *todo_env_changelog*
+
+Version 0.5
+    - 変数の追加
+        - `todo_env_not_done_str`
+        - `todo_env_done_str`
+        - `todo_env_cancellation_str`
+        - `todo_env_input_date`
+        - `todo_env_date_format_`
+        - `todo_env_default_keymappings`
+    - タスク状態の追加
+        - Cancellation
+    - 関数名の変更
+        - `Todoenv_ToggleCheckbox` -> `todo_env#ToggleCheckbox`
+    - 関数の追加
+        - todo_env#ToggleCancellation
