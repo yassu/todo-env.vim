@@ -27,7 +27,8 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 " mappings
-if !exists('g:todo_env_default_keymaps')|| (exists('g:todo_env_default_keymaps') && g:todo_env_default_keymaps)
+if !exists('g:todo_env_default_keymaps') ||
+            \(exists('g:todo_env_default_keymaps') && g:todo_env_default_keymaps)
     imap <buffer><c-l> g:todo_env_not_done_str
     nnoremap <silent><buffer>tt :call todo_env#ToggleCheckbox()<cr>
     nnoremap <silent><buffer>cc :call todo_env#ToggleCancellation()<cr>
