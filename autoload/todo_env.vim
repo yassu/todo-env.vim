@@ -45,7 +45,6 @@ endfunction
 " toggle todo whethere done or not done
 function! todo_env#ToggleCheckbox()
     let l:line = getline('.')
-    echo todo_env#s:delete_head_spaces(l:line)
     let [l:line_without_spaces, l:spaces] = todo_env#s:delete_head_spaces(l:line)
     if todo_env#s:startswith(l:line_without_spaces, g:todo_env_not_done_str)
         " insert finished time
@@ -64,15 +63,16 @@ endfunction
 
 function! todo_env#ToggleCancellation()
     let l:line = getline('.')
-    if todo_env#s:startswith(l:line, g:todo_env_not_done_str)
+    let [l:line_without_spaces, l:spaces] = todo_env#s:delete_head_spaces(l:line)
+    if todo_env#s:startswith(l:line_without_spaces, g:todo_env_not_done_str)
         let l:result = todo_env#s:replace_head(
-                    \ l:line, g:todo_env_not_done_str, g:todo_env_cancellation_str)
-    elseif todo_env#s:startswith(l:line, g:todo_env_cancellation_str)
+                    \ l:line_without_spaces, g:todo_env_not_done_str, g:todo_env_cancellation_str)
+    elseif todo_env#s:startswith(l:line_without_spaces, g:todo_env_cancellation_str)
         let l:result = todo_env#s:replace_head(
-                    \ l:line, g:todo_env_cancellation_str, g:todo_env_not_done_str)
+                    \ l:line_without_spaces, g:todo_env_cancellation_str, g:todo_env_not_done_str)
     endif
     let l:lnum = line('.')
-    call setline(l:lnum, l:result)
+    call setline(l:lnum, l:spaces . l:result)
 endfunction
 
 let &cpo = s:save_cpo
