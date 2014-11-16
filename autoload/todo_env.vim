@@ -37,10 +37,6 @@ function! todo_env#s:replace_head(text, _from, _to)
     return a:_to . a:text[len(a:_from):]
 endfunction
 
-function! todo_env#s:delete_head_spaces(line)
-    return substitute(a:line, '^\s*', '', 'g')
-endfunction
-
 function! todo_env#s:delete_date_part(line)
     return substitute(a:line, '\s*\[[^]]\+]$', '', '')
 endfunction
@@ -49,22 +45,21 @@ endfunction
 " toggle todo whethere done or not done
 function! todo_env#ToggleCheckbox()
     let l:line = getline('.')
-    if todo_env#s:startswith(l:line, g:todo_env_not_done_str)
+    echo todo_env#s:delete_head_spaces(l:line)
+    let [l:line_without_spaces, l:spaces] = todo_env#s:delete_head_spaces(l:line)
+    if todo_env#s:startswith(l:line_without_spaces, g:todo_env_not_done_str)
         " insert finished time
         let l:result = todo_env#s:replace_head(
-            \ l:line, g:todo_env_not_done_str, g:todo_env_done_str)
+            \ l:line_without_spaces, g:todo_env_not_done_str, g:todo_env_done_str)
         if g:todo_env_input_date
             let l:result .= ' [' . strftime(g:todo_env_date_format) . ']'
         endif
-        call setline('.', l:result)
-    elseif todo_env#s:startswith(l:line, g:todo_env_done_str)
+    elseif todo_env#s:startswith(l:line_without_spaces, g:todo_env_done_str)
         let l:result = todo_env#s:replace_head(
-                    \ l:line, g:todo_env_done_str, g:todo_env_not_done_str)
+                    \ l:line_without_spaces, g:todo_env_done_str, g:todo_env_not_done_str)
         let l:result = todo_env#s:delete_date_part(l:result)
-            "todo: delete_date_part function
-        " let l:result = substitute(substitute(l:line, '-\s\[x\]', '- [ ]', ''), '\s\[\d\{4}.\+]$', '', '')
-        call setline('.', l:result)
     endif
+    call setline('.', l:spaces . l:result)
 endfunction
 
 function! todo_env#ToggleCancellation()
