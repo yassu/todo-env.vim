@@ -19,9 +19,6 @@ endif
 if !exists('g:todo_env_cancellation_str')
     let g:todo_env_cancellation_str = '- [-] '
 endif
-if !exists('g:todo_env_fold_child')
-    let g:todo_env_fold_child = 1
-endif
 
 let s:save_cpo = &cpo
 set cpo&vim
