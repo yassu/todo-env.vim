@@ -45,6 +45,10 @@ endfunction
 " toggle todo whethere done or not done
 function! todo_env#ToggleCheckbox()
     let l:line = getline('.')
+    if todo_env#s:delete_head_spaces(l:line) == []
+        echomsg "This line doesn't mean a task."
+        return
+    endif
     let [l:line_without_spaces, l:spaces] = todo_env#s:delete_head_spaces(l:line)
     if todo_env#s:startswith(l:line_without_spaces, g:todo_env_not_done_str)
         " insert finished time
@@ -57,6 +61,9 @@ function! todo_env#ToggleCheckbox()
         let l:result = todo_env#s:replace_head(
                     \ l:line_without_spaces, g:todo_env_done_str, g:todo_env_not_done_str)
         let l:result = todo_env#s:delete_date_part(l:result)
+    else
+        echomsg "This line doesn't mean a task."
+        return
     endif
     call setline('.', l:spaces . l:result)
 endfunction
