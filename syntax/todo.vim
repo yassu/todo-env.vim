@@ -19,9 +19,9 @@ endif
 setlocal iskeyword+=:
 syn case ignore
 
-syn match 	inProgress 	"- \[ ] .\+"
-syn match 	itemComplete 	"\s*- \[x] .\+"
-syn match   itemNotDo       "\s*- \[-] .\+"
+exec('syn match inProgress /\s*\V' . escape(g:todo_env_not_done_str, '\') . '/')
+exec('syn match itemComplete /\s*\V' . escape(g:todo_env_done_str, '\') . '/')
+exec('syn match itemNotDo /\s*\V' . escape(g:todo_env_cancellation_str, '\') . '/')
 syn match 	location 	"^[A-Z,a-z]\+\(\s\d\+\)\?,"
 
 highlight def link inProgress Label

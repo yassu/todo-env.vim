@@ -5,6 +5,7 @@
 
 
 if !exists('g:todo_env_date_format')
+endif
     let g:todo_env_date_format = "%Y/%m/%d (%a) %H:%M"
 endif
 if !exists('g:todo_env_input_date')
