@@ -4,8 +4,9 @@
 " License: GNU
 
 
-let s:save_cpo = &cpo
+let s:save_cpo = &cpo "{{{
 set cpo&vim
+" }}}
 
 " util functions {{{
 function! todo_env#s:is_dummy_line(lstr)
@@ -42,8 +43,8 @@ function! todo_env#s:delete_date_part(line)
 endfunction
 " }}}
 
-" toggle todo whethere done or not done
-function! todo_env#ToggleCheckbox()
+" toggle functions {{{
+function! todo_env#ToggleCheckbox() "{{{
     let l:line = getline('.')
     if todo_env#s:delete_head_spaces(l:line) == []
         echomsg "This line doesn't mean a task."
@@ -67,8 +68,9 @@ function! todo_env#ToggleCheckbox()
     endif
     call setline('.', l:spaces . l:result)
 endfunction
+" }}}
 
-function! todo_env#ToggleCancellation()
+function! todo_env#ToggleCancellation() "{{{
     let l:line = getline('.')
     if todo_env#s:delete_head_spaces(l:line) == []
         echomsg "This line doesn't mean task."
@@ -89,6 +91,9 @@ function! todo_env#ToggleCancellation()
     let l:lnum = line('.')
     call setline(l:lnum, l:spaces . l:result)
 endfunction
+" }}}
+" }}}
 
-let &cpo = s:save_cpo
+let &cpo = s:save_cpo "{{{
 unlet s:save_cpo
+" }}}
