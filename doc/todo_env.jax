@@ -80,7 +80,7 @@ g:todo_env_input_date   *g:todo_env_input_date*
 
 {lhs}                         {rhs}
 --------
-<c-l>(インサートモード)       `- [ ]`を入力する.
+<c-l>(インサートモード)       `g:todo_env_not_done_str`を入力する.
 <c-c>                         |ToggleDeleteLine()|を呼ぶ.
 tt                            `Todo_ToggleCheckbox()`を呼ぶ.
 

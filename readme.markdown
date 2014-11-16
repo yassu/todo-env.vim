@@ -21,12 +21,12 @@ This plugin will automatically apply the syntax highlighting to files named `*.t
 
 ## functions
 * `todo_env#Todo_ToggleCheckbox()`: changing status of Todo.
-    e.g. change from `[ ]` to `[x]` and for `[x]` to `[ ]`.
+    e.g. change from `[ ]` to `[x]` and for `[x]` to `[ ]`, when default setting.
 * `todo_env#ToggleCancellation`: changing status of Todo: empty -> cancel
 
 ## Key mapping
 Following keymaps will not be used if `todo_env_default_keymaps` is equal to 0.
-* `<c-l>` in insert mode: input `- [ ]`.
+* `<c-l>` in insert mode: input `g:todo_env_not_done_str`.
 * `tt`: call `Todo_ToggleCheckbox` function
 * `<c-c>` call `ToggleDeleteLine()` function
 
