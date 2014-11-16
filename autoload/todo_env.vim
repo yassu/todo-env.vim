@@ -16,7 +16,7 @@ function! todo_env#s:delete_head_spaces(lstr)
     " return [content, spaces]
     let l:M = matchlist(a:lstr, '^\(\s*\)\(\S.*\)$')
     if len(l:M)
-        return [l:M[1], l:M[0]]
+        return [l:M[2], l:M[1]]
     else
         return []
     endif
