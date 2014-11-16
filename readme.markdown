@@ -32,6 +32,9 @@ Following keymaps will not be used if `todo_env_default_keymaps` is equal to 0.
 
 ## Customizing
 
+* `todo_env_not_done_str`: string for not done task
+* `todo_env_done_str`:    string for done task
+* `todo_env_cancellation_str`: string for cancelled task
 * `todo_env_input_date`: whether input date or not when done task
 * `todo_env_date_format`: date-format for using when done task
 * `todo_env_default_keymaps`: whether use default keymaps or not
