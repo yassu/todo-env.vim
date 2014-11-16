@@ -9,10 +9,6 @@ set cpo&vim
 " }}}
 
 " util functions {{{
-function! todo_env#s:is_dummy_line(lstr)
-    return a:lstr =~ '^\s*$'
-endfunction
-
 function! todo_env#s:delete_head_spaces(lstr)
     " return [content, spaces]
     let l:M = matchlist(a:lstr, '^\(\s*\)\(\S.*\)$')
