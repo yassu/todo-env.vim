@@ -47,11 +47,12 @@ endfunction
 
 " jump to next/previous task {{{
 function! todo_env#s:get_next_lines()
+    let l:lnum = line('.')
+    return getbufline('%', l:lnum, 1000000000)
 endfunction
 
 function! todo_env#s:jump_to_next_task()
 endfunction
-
 " }}}
 
 " toggle functions {{{
