@@ -29,6 +29,8 @@ if !exists('g:todo_env_default_keymaps') ||
     imap <buffer><c-l> <c-R>=g:todo_env_not_done_str<cr>
     nnoremap <silent><buffer>tt :call todo_env#ToggleCheckbox()<cr>
     nnoremap <silent><buffer>cc :call todo_env#ToggleCancellation()<cr>
+    nnoremap <silent><buffer>tk :call todo_env#Jump_to_previous_task()<cr>
+    nnoremap <silent><buffer>tj :call todo_env#Jump_to_next_task()<cr>
 endif
 
 let &cpo = s:save_cpo
