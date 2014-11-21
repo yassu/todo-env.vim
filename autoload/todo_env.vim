@@ -74,6 +74,7 @@ function! todo_env#Jump_to_next_task()
         let l:lines = l:lines[1:]
         let l:lnum += 1
     endwhile
+
     return 0
 endfunction
 
@@ -86,6 +87,7 @@ function! todo_env#Jump_to_previous_task()
             return 1
         endif
     endfor
+
     return 0
 endfunction
 " }}}
