@@ -20,7 +20,7 @@ function! todo_env#s:delete_head_spaces(lstr)
 endfunction
 
 function! todo_env#s:startswith(text, start_s)
-    return a:text[:len(a:start_s) - 1] == a:start_s
+    return len(a:text) >= len(a:start_s) && a:text[:len(a:start_s) - 1] == a:start_s
 endfunction
 
 function! todo_env#s:endswith(text, end_s)
@@ -51,8 +51,7 @@ function! todo_env#s:get_next_lines()
     return getbufline('%', l:lnum, 1000000000)
 endfunction
 
-" function! todo_env#s:get_previous_lines()
-function! Get_previous_lines()
+function! todo_env#s:get_previous_lines()
     let l:lnum = line('.')
     return getbufline('%', 1, l:lnum - 1)
 endfunction
@@ -69,13 +68,24 @@ function! todo_env#Jump_to_next_task()
 
     while l:lines != []
         if todo_env#s:is_not_done_task(l:lines[0])
-            call todo_env#s:jump_line(lnum)
-            echo l:lnum
+            call todo_env#s:jump_line(l:lnum)
             return 1
         endif
         let l:lines = l:lines[1:]
         let l:lnum += 1
     endwhile
+    return 0
+endfunction
+
+function! todo_env#Jump_to_previous_task()
+    let l:lnum  = line('.') - 1
+    for i in reverse(range(1, lnum))
+        let l:line = getline(i)
+        if todo_env#s:is_not_done_task(l:line)
+            call todo_env#s:jump_line(i)
+            return 1
+        endif
+    endfor
     return 0
 endfunction
 " }}}
