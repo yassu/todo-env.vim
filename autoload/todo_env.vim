@@ -38,6 +38,21 @@ function! todo_env#s:delete_date_part(line)
     return substitute(a:line, '\s*\[[^]]\+]$', '', '')
 endfunction
 " }}}
+"
+" functios about status of task {{{
+function! todo_env#s:is_not_done_task(lstr)
+    return todo_env#s:startswith(todo_env#s:delete_head_spaces(a:lstr)[0], g:todo_env_not_done_str)
+endfunction
+" }}}
+
+" jump to next/previous task {{{
+function! todo_env#s:get_next_lines()
+endfunction
+
+function! todo_env#s:jump_to_next_task()
+endfunction
+
+" }}}
 
 " toggle functions {{{
 function! todo_env#ToggleCheckbox() "{{{
