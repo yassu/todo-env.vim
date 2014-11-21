@@ -23,6 +23,8 @@ This plugin will automatically apply the syntax highlighting to files named `*.t
 * `todo_env#Todo_ToggleCheckbox()`: changing status of Todo.
     e.g. change from `[ ]` to `[x]` and for `[x]` to `[ ]`, when default setting.
 * `todo_env#ToggleCancellation`: changing status of Todo: empty -> cancel
+* `todo_env#Jump_to_next_task()`: move to next task, not finished
+* `todo_env#Jump_to_previous_task`: move to previous task, not finished
 
 ## Key mapping
 Following keymaps will not be used if `todo_env_default_keymaps` is equal to 0.

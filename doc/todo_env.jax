@@ -49,6 +49,8 @@ Location 2, Person 2
 
 |todo_env#Todo_ToggleCheckbox()|    まだ完成していないタスクと完成済みのタスクをトグルします.
 |todo_env#ToggleDeleteLine()| まだ完成していないタスクとやらないことになったタスクをトグルします.
+|todo_env#Jump_to_next_task()| まだ終了していない次のタスクに移動します.
+|todo_env#Jump_to_previous_task()| まだ終了していない前のタスクに移動する.
 
 --------------------------------------------------------------------------------
 
