@@ -9,7 +9,7 @@ set cpo&vim
 " }}}
 
 " util functions {{{
-function! todo_env#s:delete_head_spaces(lstr)
+function! todo_env#s:delete_head_spaces(lstr) "{{{
     " return [content, spaces]
     let l:M = matchlist(a:lstr, '^\(\s*\)\(\S.*\)$')
     if len(l:M)
@@ -18,29 +18,34 @@ function! todo_env#s:delete_head_spaces(lstr)
         return []
     endif
 endfunction
+" }}}
 
-function! todo_env#s:startswith(text, start_s)
+function! todo_env#s:startswith(text, start_s) "{{{
     return len(a:text) >= len(a:start_s) && a:text[:len(a:start_s) - 1] == a:start_s
 endfunction
+" }}}
 
-function! todo_env#s:endswith(text, end_s)
+function! todo_env#s:endswith(text, end_s) "{{{
     return a:text[-len(a:end_s):] == a:end_s
 endfunction
+" }}}
 
-function! todo_env#s:replace_head(text, _from, _to)
+function! todo_env#s:replace_head(text, _from, _to) "{{{
     if !todo_env#s:startswith(a:text, a:_from)
         return text
     endif
     return a:_to . a:text[len(a:_from):]
 endfunction
+" }}}
 
-function! todo_env#s:delete_date_part(line)
+function! todo_env#s:delete_date_part(line) "{{{
     return substitute(a:line, '\s*\[[^]]\+]$', '', '')
 endfunction
 " }}}
+" }}}
 
 " functios about status of task {{{
-function! todo_env#s:is_not_done_task(lstr)
+function! todo_env#s:is_not_done_task(lstr) "{{{
     if todo_env#s:delete_head_spaces(a:lstr) == []
         return 0
     endif
@@ -48,25 +53,29 @@ function! todo_env#s:is_not_done_task(lstr)
     return todo_env#s:startswith(todo_env#s:delete_head_spaces(a:lstr)[0], g:todo_env_not_done_str)
 endfunction
 " }}}
+" }}}
 
 " jump to next/previous task {{{
-function! todo_env#s:get_next_lines()
+function! todo_env#s:get_next_lines() "{{{
     let l:lnum = line('.')
     return getbufline('%', l:lnum, 100000000)
 endfunction
+" }}}
 
-function! todo_env#s:get_previous_lines()
+function! todo_env#s:get_previous_lines() "{{{
     let l:lnum = line('.')
     return getbufline('%', 1, l:lnum - 1)
 endfunction
+" }}}
 
-function! todo_env#s:jump_line(lnum)
+function! todo_env#s:jump_line(lnum) "{{{
     let l:lstr = getline(a:lnum)
     let l:col = len(todo_env#s:delete_head_spaces(l:lstr)[1]) + 1
     call cursor(a:lnum, l:col)
 endfunction
+" }}}
 
-function! todo_env#Jump_to_next_task()
+function! todo_env#Jump_to_next_task() "{{{
     let l:lines = todo_env#s:get_next_lines()[1:]
     let l:lnum  = line('.') + 1
 
@@ -81,8 +90,9 @@ function! todo_env#Jump_to_next_task()
 
     return 0
 endfunction
+" }}}
 
-function! todo_env#Jump_to_previous_task()
+function! todo_env#Jump_to_previous_task() "{{{
     let l:lnum  = line('.') - 1
     for i in reverse(range(1, l:lnum))
         let l:line = getline(i)
@@ -94,6 +104,7 @@ function! todo_env#Jump_to_previous_task()
 
     return 0
 endfunction
+" }}}
 " }}}
 
 " toggle functions {{{
