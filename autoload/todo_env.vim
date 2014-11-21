@@ -51,13 +51,19 @@ function! todo_env#s:get_next_lines()
     return getbufline('%', l:lnum, 1000000000)
 endfunction
 
+function! todo_env#s:jump_line(lnum)
+    let l:lstr = getline(a:lnum)
+    let l:col = len(todo_env#s:delete_head_spaces(l:lstr)[1]) + 1
+    call cursor(a:lnum, l:col)
+endfunction
+
 function! todo_env#s:jump_to_next_task()
     let l:lines = todo_env#s:get_next_lines()[1:]
     let l:lnum  = line('.') + 1
 
     while l:lines != []
         if todo_env#s:is_not_done_task(l:lines[0])
-            " todo_env#s:jump_task(lnum())
+            todo_env#s:jump_task(lnum)
             echo l:lnum
             return 1
         endif
