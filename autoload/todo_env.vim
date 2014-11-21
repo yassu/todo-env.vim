@@ -38,7 +38,7 @@ function! todo_env#s:delete_date_part(line)
     return substitute(a:line, '\s*\[[^]]\+]$', '', '')
 endfunction
 " }}}
-"
+
 " functios about status of task {{{
 function! todo_env#s:is_not_done_task(lstr)
     return todo_env#s:startswith(todo_env#s:delete_head_spaces(a:lstr)[0], g:todo_env_not_done_str)
@@ -48,7 +48,7 @@ endfunction
 " jump to next/previous task {{{
 function! todo_env#s:get_next_lines()
     let l:lnum = line('.')
-    return getbufline('%', l:lnum, 1000000000)
+    return getbufline('%', l:lnum, 100000000)
 endfunction
 
 function! todo_env#s:get_previous_lines()
