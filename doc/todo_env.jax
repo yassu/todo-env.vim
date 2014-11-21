@@ -85,6 +85,7 @@ g:todo_env_input_date   *g:todo_env_input_date*
 <c-l>(インサートモード)       `g:todo_env_not_done_str`を入力する.
 <c-c>                         |ToggleDeleteLine()|を呼ぶ.
 tt                            `todo_env#ToggleCheckbox()`を呼ぶ.
+tj                            `todo_env#Jump_to_next_task()`を呼ぶ.-tk                            `todo_env#Jump_to_previous_task`を呼ぶ.
 
 ================================================================================
 
