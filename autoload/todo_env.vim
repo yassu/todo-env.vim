@@ -41,6 +41,10 @@ endfunction
 
 " functios about status of task {{{
 function! todo_env#s:is_not_done_task(lstr)
+    if todo_env#s:delete_head_spaces(a:lstr) == []
+        return 0
+    endif
+
     return todo_env#s:startswith(todo_env#s:delete_head_spaces(a:lstr)[0], g:todo_env_not_done_str)
 endfunction
 " }}}
@@ -80,7 +84,7 @@ endfunction
 
 function! todo_env#Jump_to_previous_task()
     let l:lnum  = line('.') - 1
-    for i in reverse(range(1, lnum))
+    for i in reverse(range(1, l:lnum))
         let l:line = getline(i)
         if todo_env#s:is_not_done_task(l:line)
             call todo_env#s:jump_line(i)
