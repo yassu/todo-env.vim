@@ -51,6 +51,12 @@ function! todo_env#s:get_next_lines()
     return getbufline('%', l:lnum, 1000000000)
 endfunction
 
+" function! todo_env#s:get_previous_lines()
+function! Get_previous_lines()
+    let l:lnum = line('.')
+    return getbufline('%', 1, l:lnum - 1)
+endfunction
+
 function! todo_env#s:jump_line(lnum)
     let l:lstr = getline(a:lnum)
     let l:col = len(todo_env#s:delete_head_spaces(l:lstr)[1]) + 1
