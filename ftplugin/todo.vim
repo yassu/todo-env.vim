@@ -10,8 +10,8 @@ endif
 if !exists('g:todo_env_input_date')
     let g:todo_env_input_date = 1
 endif
-if !exists('g:todo_env_not_done_str')
-    let g:todo_env_not_done_str = '- [ ] '
+if !exists('g:todo_env_unfinished_str')
+    let g:todo_env_unfinished_str = '- [ ] '
 endif
 if !exists('g:todo_env_done_str')
     let g:todo_env_done_str = '- [x] '
@@ -26,7 +26,7 @@ set cpo&vim
 " mappings
 if !exists('g:todo_env_default_keymaps') ||
             \(exists('g:todo_env_default_keymaps') && g:todo_env_default_keymaps)
-    imap <buffer><c-l> <c-R>=g:todo_env_not_done_str<cr>
+    imap <buffer><c-l> <c-R>=g:todo_env_unfinished_str<cr>
     nnoremap <silent><buffer>tt :call todo_env#ToggleCheckbox()<cr>
     nnoremap <silent><buffer>cc :call todo_env#ToggleCancellation()<cr>
     nnoremap <silent><buffer>tk :call todo_env#Jump_to_previous_task()<cr>

@@ -45,12 +45,12 @@ endfunction
 " }}}
 
 " functios about status of task {{{
-function! todo_env#s:is_not_done_task(lstr) "{{{
+function! todo_env#s:is_unfinished_task(lstr) "{{{
     if todo_env#s:delete_head_spaces(a:lstr) == []
         return 0
     endif
 
-    return todo_env#s:startswith(todo_env#s:delete_head_spaces(a:lstr)[0], g:todo_env_not_done_str)
+    return todo_env#s:startswith(todo_env#s:delete_head_spaces(a:lstr)[0], g:todo_env_unfinished_str)
 endfunction
 " }}}
 " }}}
@@ -80,7 +80,7 @@ function! todo_env#Jump_to_next_task() "{{{
     let l:lnum  = line('.') + 1
 
     while l:lines != []
-        if todo_env#s:is_not_done_task(l:lines[0])
+        if todo_env#s:is_unfinished_task(l:lines[0])
             call todo_env#s:jump_line(l:lnum)
             return 1
         endif
@@ -96,7 +96,7 @@ function! todo_env#Jump_to_previous_task() "{{{
     let l:lnum  = line('.') - 1
     for i in reverse(range(1, l:lnum))
         let l:line = getline(i)
-        if todo_env#s:is_not_done_task(l:line)
+        if todo_env#s:is_unfinished_task(l:line)
             call todo_env#s:jump_line(i)
             return 1
         endif
@@ -115,16 +115,16 @@ function! todo_env#ToggleCheckbox() "{{{
         return
     endif
     let [l:line_without_spaces, l:spaces] = todo_env#s:delete_head_spaces(l:line)
-    if todo_env#s:startswith(l:line_without_spaces, g:todo_env_not_done_str)
+    if todo_env#s:startswith(l:line_without_spaces, g:todo_env_unfinished_str)
         " insert finished time
         let l:result = todo_env#s:replace_head(
-            \ l:line_without_spaces, g:todo_env_not_done_str, g:todo_env_done_str)
+            \ l:line_without_spaces, g:todo_env_unfinished_str, g:todo_env_done_str)
         if g:todo_env_input_date
             let l:result .= ' [' . strftime(g:todo_env_date_format) . ']'
         endif
     elseif todo_env#s:startswith(l:line_without_spaces, g:todo_env_done_str)
         let l:result = todo_env#s:replace_head(
-                    \ l:line_without_spaces, g:todo_env_done_str, g:todo_env_not_done_str)
+                    \ l:line_without_spaces, g:todo_env_done_str, g:todo_env_unfinished_str)
         let l:result = todo_env#s:delete_date_part(l:result)
     else
         echomsg "This line doesn't mean a task."
@@ -142,12 +142,12 @@ function! todo_env#ToggleCancellation() "{{{
     endif
 
     let [l:line_without_spaces, l:spaces] = todo_env#s:delete_head_spaces(l:line)
-    if todo_env#s:startswith(l:line_without_spaces, g:todo_env_not_done_str)
+    if todo_env#s:startswith(l:line_without_spaces, g:todo_env_unfinished_str)
         let l:result = todo_env#s:replace_head(
-                    \ l:line_without_spaces, g:todo_env_not_done_str, g:todo_env_cancellation_str)
+                    \ l:line_without_spaces, g:todo_env_unfinished_str, g:todo_env_cancellation_str)
     elseif todo_env#s:startswith(l:line_without_spaces, g:todo_env_cancellation_str)
         let l:result = todo_env#s:replace_head(
-                    \ l:line_without_spaces, g:todo_env_cancellation_str, g:todo_env_not_done_str)
+                    \ l:line_without_spaces, g:todo_env_cancellation_str, g:todo_env_unfinished_str)
     else
         echomsg "This line doesn't mean empty or cancelled task."
         return
