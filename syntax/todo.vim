@@ -21,12 +21,12 @@ syn case ignore
 
 exec('syn match inProgress /\s*\V' . escape(g:todo_env_unfinished_str, '\') . '/')
 exec('syn match itemComplete /\s*\V' . escape(g:todo_env_done_str, '\') . '/')
-exec('syn match itemNotDo /\s*\V' . escape(g:todo_env_cancellation_str, '\') . '/')
+exec('syn match itemNotDone /\s*\V' . escape(g:todo_env_cancellation_str, '\') . '/')
 syn match 	location 	"^[A-Z,a-z]\+\(\s\d\+\)\?,"
 
 highlight def link inProgress Label
 highlight def link itemComplete Type
-highlight def link itemNotDo Comment
+highlight def link itemNotDone Comment
 highlight def link location Number
 
 if g:todo_env_use_comment
