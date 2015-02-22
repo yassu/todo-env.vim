@@ -34,11 +34,6 @@ Following keymaps will not be used if `todo_env_default_keymaps` is equal to 0.
 * `tj`: call `todo_env#Jump_to_next_task()` function
 * `tk`: call `todo_env#Jump_to_previous_task` function
 
-=======
-* `<c-l>` in insert mode: input `g:todo_env_unfinished_str`.
-* `tt`: call `Todo_ToggleCheckbox` function
-* `<c-c>` call `ToggleDeleteLine()` function
-
 ## Customizing
 
 * `todo_env_unfinished_str`: string for not done task
