@@ -77,6 +77,13 @@ g:todo_env_input_date   *g:todo_env_input_date*
 この値が0なら日付を入力しません.
 概定値は1です.
 
+g:todo_env_date_format *g:todo_env_date_format*
+ タスク完了時に入力する日付のフォーマットを指定します.
+
+g:todo_env_default_keymappings *g:todo_env_default_keymappings*
+ この値が0なら|todo_env_keymappings|で定義するマッピングを定義しません.
+ 既定値は1です.
+
 g:todo_env_use_comment *g:todo_env_use_comment*
  コメントをシンタックスハイライトするかどうかを指定します.
  ここで,
