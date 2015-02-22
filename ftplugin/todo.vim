@@ -19,6 +19,12 @@ endif
 if !exists('g:todo_env_cancellation_str')
     let g:todo_env_cancellation_str = '- [-] '
 endif
+if !exists('g:todo_env_use_comment')
+  let g:todo_env_use_comment = 1
+endif
+if g:todo_env_use_comment && !exists('g:todo_env_comment_char')
+    let g:todo_env_comment_char = '#'
+endif
 
 let s:save_cpo = &cpo
 set cpo&vim

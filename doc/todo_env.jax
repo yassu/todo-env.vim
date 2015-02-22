@@ -77,6 +77,16 @@ g:todo_env_input_date   *g:todo_env_input_date*
 この値が0なら日付を入力しません.
 概定値は1です.
 
+g:todo_env_use_comment *g:todo_env_use_comment*
+ コメントをシンタックスハイライトするかどうかを指定します.
+ ここで,
+ コメントとは正規表現で^\s*#にマッチする文字列です.
+ この"#"はg:todo_env_comment_charを設定することによって変更できます.
+
+g:todo_env_comment_char *g:todo_env_comment_char*
+ コメントの定義での"#"をこの文字に変更します.
+ 既定値は"#"です.
+
 マッピング  *todo_env_keymappings*
 以下のマッピングは`todo_env_default_keymappings`が0であれば,設定されません.
 

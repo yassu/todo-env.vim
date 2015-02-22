@@ -29,4 +29,10 @@ highlight def link itemComplete Type
 highlight def link itemNotDo Comment
 highlight def link location Number
 
+if g:todo_env_use_comment
+  " syn match itemComment /^\s*#.*/
+  exec('syn match itemComment /^\s*\V' . escape(g:todo_env_comment_char, '\'). '/')
+  highlight def link itemComment Comment
+endif
+
 let b:current_syntax = "todo"

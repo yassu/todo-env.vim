@@ -42,6 +42,11 @@ Following keymaps will not be used if `todo_env_default_keymaps` is equal to 0.
 * `todo_env_input_date`: whether input date or not when done task
 * `todo_env_date_format`: date-format for using when done task
 * `todo_env_default_keymaps`: whether use default keymaps or not
+* `todo_env_use_comment`: If this variable is 0, we cannot use comment.
+                          Else, we can use comment.
+                          Expression of comment is `^\s*#`, where `#` is
+                          `todo_env_comment_char`
+* `todo_env_comment_char`: This string is used for preffix of comment syntax.
 
 ## Installation
 Copy the included folders to your $VIM folder.
