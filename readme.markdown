@@ -54,7 +54,7 @@ For Example,
 ```
 let todo_env_unfinished_str = "\U2602  "
 let todo_env_done_str = "\U2600  "
-let todo_env_cancellation_str = "\Us601  "
+let todo_env_cancellation_str = "\U2601  "
 let todo_env_input_date = 1
 ```
 then you obtain following syntax:
