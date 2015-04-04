@@ -17,6 +17,8 @@ Location 2, Person 2
 - [x] Completed Item
 ```
 
+![todo-env-01](http://gyazo.com/b6cf2e883ed94f3ff833842b3f9e5103.png)
+
 This plugin will automatically apply the syntax highlighting to files named `*.todo`.
 
 ## functions
@@ -47,6 +49,17 @@ Following keymaps will not be used if `todo_env_default_keymaps` is equal to 0.
                           Expression of comment is `^\s*#`, where `#` is
                           `todo_env_comment_char`
 * `todo_env_comment_char`: This string is used for preffix of comment syntax.
+
+For Example,
+```
+let todo_env_unfinished_str = "\U2602  "
+let todo_env_done_str = "\U2600  "
+let todo_env_cancellation_str = "\Us601  "
+let todo_env_input_date = 1
+```
+then you obtain following syntax:
+
+![todo-env-02](http://gyazo.com/09baefb87ad59a262f55ff9c84f62b9e.png)
 
 ## Installation
 Copy the included folders to your $VIM folder.
